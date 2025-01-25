@@ -15,10 +15,10 @@ public class Character : MonoBehaviour
 
     private int _initiative;
 
+    private int _constitutionAttribute;
+
     // Телосложение
     private int _constitution;
-
-    private int _constitutionAttribute;
 
     private int _strengthAttribute;
 
