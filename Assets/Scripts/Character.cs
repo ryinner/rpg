@@ -5,7 +5,7 @@ public class Character : MonoBehaviour
 {
     private const int DEFAUL_PROTECTION = 10;
 
-    [SerializeField]
+    [SerializeField, Range(6, 100)]
     private int _maxHp;
 
     private int _hp;
@@ -17,37 +17,37 @@ public class Character : MonoBehaviour
     private int _initiative;
 
     // Телосложение
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _constitution;
 
     private int _constitutionModifier;
 
     // Сила
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _strength;
 
     private int _strengthModifier;
 
     // Ловкость
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _dexterity;
 
     private int _dexterityModifier;
 
     // Интеллект
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _intelligence;
 
     private int _intelligenceModifier;
 
     // Мудрость
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _wisdom;
 
     private int _wisdomModifier;
 
     // Харизма
-    [SerializeField]
+    [SerializeField, Range(3, 20)]
     private int _charisma;
 
     private int _charismaModifier;
