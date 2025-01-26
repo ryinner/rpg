@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AbstractRace))]
 public class Character : MonoBehaviour
 {
     private const int DEFAUL_PROTECTION = 10;
+
+    private AbstractRace _race;
 
     [SerializeField, Range(6, 100)]
     private int _maxHp;
@@ -70,6 +73,11 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
+        _race = GetComponent<AbstractRace>();
+
+        _race.ApplyRaceBonuses(this);
+        _maxSpeed = _race.Speed;
+
         _constitutionModifier = CalculateModifier(_constitution);
         _strengthModifier = CalculateModifier(_strength);
         _dexterityModifier = CalculateModifier(_dexterity);
