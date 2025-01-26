@@ -5,6 +5,7 @@ public class Character : MonoBehaviour
 {
     private const int DEFAUL_PROTECTION = 10;
 
+    [SerializeField]
     private int _maxHp;
 
     private int _hp;
@@ -15,35 +16,41 @@ public class Character : MonoBehaviour
 
     private int _initiative;
 
-    private int _constitutionAttribute;
-
     // Телосложение
+    [SerializeField]
     private int _constitution;
 
-    private int _strengthAttribute;
+    private int _constitutionModifier;
 
     // Сила
+    [SerializeField]
     private int _strength;
 
-    private int _dexterityAttribute;
+    private int _strengthModifier;
 
     // Ловкость
+    [SerializeField]
     private int _dexterity;
 
-    private int _intelligenceAttribute;
+    private int _dexterityModifier;
 
     // Интеллект
+    [SerializeField]
     private int _intelligence;
 
-    private int _wisdomAttribute;
+    private int _intelligenceModifier;
 
     // Мудрость
+    [SerializeField]
     private int _wisdom;
 
-    private int _charismaAttribute;
+    private int _wisdomModifier;
 
     // Харизма
+    [SerializeField]
     private int _charisma;
+
+    private int _charismaModifier;
 
     private int Protection { 
         get {
@@ -63,12 +70,14 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        _strength = CalculateModifier(_strengthAttribute);
-        _dexterity = CalculateModifier(_dexterityAttribute);
-        _intelligence = CalculateModifier(_intelligenceAttribute);
-        _wisdom = CalculateModifier(_wisdomAttribute);
-        _charisma = CalculateModifier(_charismaAttribute);
+        _constitutionModifier = CalculateModifier(_constitution);
+        _strengthModifier = CalculateModifier(_strength);
+        _dexterityModifier = CalculateModifier(_dexterity);
+        _intelligenceModifier = CalculateModifier(_intelligence);
+        _wisdomModifier = CalculateModifier(_wisdom);
+        _charismaModifier = CalculateModifier(_charisma);
 
+        _hp = _maxHp;
         _initiative = _dexterity;
     }
 
