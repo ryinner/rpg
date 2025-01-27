@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     [SerializeField, Range(1, 20)]
     private int _level;
 
-    [SerializeField, Range(0, 100), Tooltip("If zero then it be calculated automatically")]
+    [SerializeField, Range(0, 100), Tooltip("If zero then it be calculated automatically"), ContextMenuItem("Calculate", nameof(CalculateMaxHp))]
     private int _maxHp;
 
     private int _hp;
@@ -31,42 +31,116 @@ public class Character : MonoBehaviour
     [SerializeField, Range(3, 20)]
     private int _constitution;
 
-    private int _constitutionModifier;
+    private int? _constitutionModifier = null;
+
+    public int ConstitutionModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _constitutionModifier = CalculateModifier(_constitution);
+            }
+            return _constitutionModifier ??= CalculateModifier(_constitution);
+        }
+    }
 
     // Сила
     [SerializeField, Range(3, 20)]
     private int _strength;
 
-    private int _strengthModifier;
+    private int? _strengthModifier = null;
+
+    public int StrengthModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _strengthModifier = CalculateModifier(_strength);
+            }
+            return _strengthModifier ??= CalculateModifier(_strength);
+        }
+    }
 
     // Ловкость
     [SerializeField, Range(3, 20)]
     private int _dexterity;
 
-    private int _dexterityModifier;
+    private int? _dexterityModifier = null;
+
+    public int DexterityModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _dexterityModifier = CalculateModifier(_dexterity);
+            }
+            return _dexterityModifier ??= CalculateModifier(_dexterity);
+        }
+    }
 
     // Интеллект
     [SerializeField, Range(3, 20)]
     private int _intelligence;
 
-    private int _intelligenceModifier;
+    private int? _intelligenceModifier = null;
+
+    public int IntelligenceModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _intelligenceModifier = CalculateModifier(_intelligence);
+            }
+            return _intelligenceModifier ??= CalculateModifier(_intelligence);
+        }
+    }
 
     // Мудрость
     [SerializeField, Range(3, 20)]
     private int _wisdom;
 
-    private int _wisdomModifier;
+    private int? _wisdomModifier = null;
+
+    public int WisdomModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _wisdomModifier = CalculateModifier(_wisdom);
+            }
+            return _wisdomModifier ??= CalculateModifier(_wisdom);
+        }
+    }
 
     // Харизма
     [SerializeField, Range(3, 20)]
     private int _charisma;
 
-    private int _charismaModifier;
+    private int? _charismaModifier = null;
 
-    private int Protection { 
-        get {
+    public int CharismaModifier
+    {
+        get
+        {
+            if (Application.isEditor)
+            {
+                _charismaModifier = CalculateModifier(_charisma);
+            }
+            return _charismaModifier ??= CalculateModifier(_charisma);
+        }
+    }
+
+    protected int Protection
+    {
+        get
+        {
             return DEFAUL_PROTECTION + _dexterity;
-        } 
+        }
     }
 
     public void PrepareToRound()
@@ -93,28 +167,26 @@ public class Character : MonoBehaviour
         _level = 1;
         if (_maxHp == 0)
         {
-            _maxHp = CalculateMaxHp();
+            CalculateMaxHp();
         }
-        _hp = _maxHp;
-        _initiative = _dexterity;
+        _initiative = DexterityModifier;
     }
 
-    private int CalculateMaxHp()
+    private void CalculateMaxHp()
     {
-        int hp = 0;
+        _maxHp = 0;
         for (int i = 0; i < _level; i++)
         {
             if (_level == 1)
             {
-                hp += (int)_class.HpDice;
+                _maxHp += (int)_class.HpDice;
             }
             else
             {
-                hp += Dice.Roll(_class.HpDice);
+                _maxHp += Dice.Roll(_class.HpDice);
             }
-            hp += _constitutionModifier;
+            _maxHp += ConstitutionModifier;
         }
-        return hp;
     }
 
     private int CalculateModifier(int attribute)
