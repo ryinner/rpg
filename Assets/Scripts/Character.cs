@@ -1,21 +1,20 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(AbstractRace))]
 public class Character : MonoBehaviour
 {
     private const int DEFAUL_PROTECTION = 10;
 
     [SerializeField]
-    private AbstractRace _race;
+    private Race _race;
 
     [SerializeField]
-    private AbstractClass _class;
+    private Class _class;
 
     [SerializeField, Range(1, 20)]
     private int _level;
 
-    [SerializeField, Range(6, 100)]
+    [SerializeField, Range(0, 100), Tooltip("If zero then it be calculated automatically")]
     private int _maxHp;
 
     private int _hp;
@@ -25,6 +24,8 @@ public class Character : MonoBehaviour
     private int _speed;
 
     private int _initiative;
+
+    [Header("Character characteristics")]
 
     // Телосложение
     [SerializeField, Range(3, 20)]
@@ -80,9 +81,6 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        _race = GetComponent<AbstractRace>();
-
-        _race.ApplyRaceBonuses(this);
         _maxSpeed = _race.Speed;
 
         _constitutionModifier = CalculateModifier(_constitution);

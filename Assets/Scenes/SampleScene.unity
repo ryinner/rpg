@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2004875260}
   - component: {fileID: 2004875259}
   - component: {fileID: 2004875264}
-  - component: {fileID: 2004875263}
+  - component: {fileID: 2004875265}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -418,18 +418,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2004875263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004875258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40115e897e2969e44a8f61b33a7efcf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2004875264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a0ff95b72851448a6294df4d5bdc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _race: {fileID: 8110470332400355717, guid: 3a60e243f30ba6c418685f4fb6dbb7d2, type: 3}
+  _class: {fileID: 0}
+  _level: 1
   _maxHp: 6
   _constitution: 3
   _strength: 3
@@ -449,6 +440,64 @@ MonoBehaviour:
   _intelligence: 3
   _wisdom: 3
   _charisma: 3
+--- !u!114 &2004875265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004875258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e599a16536d2d0f4589edd1f5ee545ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 30
+--- !u!1 &2007399768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007399770}
+  - component: {fileID: 2007399769}
+  m_Layer: 0
+  m_Name: Warrior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2007399769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007399768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0be78c33b76a841a2be7f94e0f59ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpDice: 10
+--- !u!4 &2007399770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007399768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.3720565, y: -2.428139, z: 6.5236206}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -456,3 +505,4 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 2004875262}
+  - {fileID: 2007399770}
