@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 30
+  _bonuses:
+  - {fileID: 5581502649738233032, guid: 96cb028417c50014dad58945e92cbc14, type: 3}
+  - {fileID: 2746986704648637227, guid: d98f1fb305efaa0488085bffc8d9444f, type: 3}

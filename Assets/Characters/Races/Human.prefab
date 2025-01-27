@@ -45,3 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 30
+  _bonuses:
+  - {fileID: 387134964824739525, guid: 61fbd564784d4be45b211eb10ffeab72, type: 3}
+  - {fileID: 6593930420016577769, guid: 66b4b12907af33e4dbd4cdf62a9c26fc, type: 3}
+  - {fileID: 7839951760876135393, guid: 302c58cc7fe32764b972b5116934f9ee, type: 3}
+  - {fileID: 2746986704648637227, guid: d98f1fb305efaa0488085bffc8d9444f, type: 3}
+  - {fileID: 7418359774799216360, guid: 12f2bd8c1bac30641b342b784352509b, type: 3}
+  - {fileID: 6408377027786101506, guid: 837ec7a71f1bdc845b167e5146bffbe5, type: 3}

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable
@@ -30,7 +31,7 @@ public class Character : MonoBehaviour, IDamagable
             }
         }
     }
-
+    
     private int _maxSpeed;
 
     private int _speed;
@@ -42,6 +43,8 @@ public class Character : MonoBehaviour, IDamagable
     // Телосложение
     [SerializeField, Range(3, 20)]
     private int _constitution;
+
+    public int Constitution { get => _constitution; set => _constitution = value; }
 
     private int? _constitutionModifier = null;
 
@@ -61,6 +64,8 @@ public class Character : MonoBehaviour, IDamagable
     [SerializeField, Range(3, 20)]
     private int _strength;
 
+    public int Strength { get => _strength; set => _strength = value; }
+
     private int? _strengthModifier = null;
 
     public int StrengthModifier
@@ -78,6 +83,8 @@ public class Character : MonoBehaviour, IDamagable
     // Ловкость
     [SerializeField, Range(3, 20)]
     private int _dexterity;
+
+    public int Dexterity { get => _dexterity; set => _dexterity = value; }
 
     private int? _dexterityModifier = null;
 
@@ -97,6 +104,8 @@ public class Character : MonoBehaviour, IDamagable
     [SerializeField, Range(3, 20)]
     private int _intelligence;
 
+    public int Intelligence { get => _intelligence; set => _intelligence = value; }
+
     private int? _intelligenceModifier = null;
 
     public int IntelligenceModifier
@@ -114,6 +123,8 @@ public class Character : MonoBehaviour, IDamagable
     // Мудрость
     [SerializeField, Range(3, 20)]
     private int _wisdom;
+
+    public int Wisdom { get => _wisdom; set => _wisdom = value; }
 
     private int? _wisdomModifier = null;
 
@@ -133,6 +144,8 @@ public class Character : MonoBehaviour, IDamagable
     [SerializeField, Range(3, 20)]
     private int _charisma;
 
+    public int Charisma { get => _charisma; set => _charisma = value; }
+
     private int? _charismaModifier = null;
 
     public int CharismaModifier
@@ -146,14 +159,19 @@ public class Character : MonoBehaviour, IDamagable
             return _charismaModifier ??= CalculateModifier(_charisma);
         }
     }
-
-    protected int Protection
+    
+    public int Protection
     {
         get
         {
             return DEFAUL_PROTECTION + _dexterity;
         }
     }
+
+    [SerializeField]
+    private List<AbstractBonus> _bonuses = new ();
+
+    public List<AbstractBonus> Bonuses { get { return _bonuses; } }
 
     public void PrepareToRound()
     {
@@ -172,6 +190,8 @@ public class Character : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        TakeBonuses(_race.Bonuses);
+
         _maxSpeed = _race.Speed;
 
         _constitutionModifier = CalculateModifier(_constitution);
@@ -186,7 +206,21 @@ public class Character : MonoBehaviour, IDamagable
         {
             CalculateMaxHp();
         }
+
         _initiative = DexterityModifier;
+    }
+
+    private void TakeBonuses(List<AbstractBonus> bonuses)
+    {
+        foreach (AbstractBonus bonus in bonuses)
+        {
+            if (_bonuses.Contains(bonus))
+            {
+                continue;
+            }
+            _bonuses.Add(bonus);
+            bonus.Apply(this);
+        }
     }
 
     private void CalculateMaxHp()

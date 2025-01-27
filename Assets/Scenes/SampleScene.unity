@@ -507,7 +507,6 @@ GameObject:
   - component: {fileID: 2004875260}
   - component: {fileID: 2004875259}
   - component: {fileID: 2004875264}
-  - component: {fileID: 2004875265}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -616,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a0ff95b72851448a6294df4d5bdc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _race: {fileID: 8110470332400355717, guid: 3a60e243f30ba6c418685f4fb6dbb7d2, type: 3}
+  _race: {fileID: 6884930536561753244, guid: 3a1ab70e6801b0a4b9b8b4b683349864, type: 3}
   _class: {fileID: 2007399769}
   _level: 1
   _maxHp: 10
@@ -626,19 +625,7 @@ MonoBehaviour:
   _intelligence: 3
   _wisdom: 3
   _charisma: 3
---- !u!114 &2004875265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004875258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e599a16536d2d0f4589edd1f5ee545ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 30
+  _bonuses: []
 --- !u!1 &2007399768
 GameObject:
   m_ObjectHideFlags: 0
