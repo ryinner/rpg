@@ -6,7 +6,14 @@ public class Character : MonoBehaviour
 {
     private const int DEFAUL_PROTECTION = 10;
 
+    [SerializeField]
     private AbstractRace _race;
+
+    [SerializeField]
+    private AbstractClass _class;
+
+    [SerializeField, Range(1, 20)]
+    private int _level;
 
     [SerializeField, Range(6, 100)]
     private int _maxHp;
@@ -85,8 +92,31 @@ public class Character : MonoBehaviour
         _wisdomModifier = CalculateModifier(_wisdom);
         _charismaModifier = CalculateModifier(_charisma);
 
+        _level = 1;
+        if (_maxHp == 0)
+        {
+            _maxHp = CalculateMaxHp();
+        }
         _hp = _maxHp;
         _initiative = _dexterity;
+    }
+
+    private int CalculateMaxHp()
+    {
+        int hp = 0;
+        for (int i = 0; i < _level; i++)
+        {
+            if (_level == 1)
+            {
+                hp += (int)_class.HpDice;
+            }
+            else
+            {
+                hp += Dice.Roll(_class.HpDice);
+            }
+            hp += _constitutionModifier;
+        }
+        return hp;
     }
 
     private int CalculateModifier(int attribute)
