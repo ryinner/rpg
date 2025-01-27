@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IDamagable
 {
     private const int DEFAUL_PROTECTION = 10;
 
@@ -18,6 +18,18 @@ public class Character : MonoBehaviour
     private int _maxHp;
 
     private int _hp;
+
+    public int Hp {
+        get => _hp;
+        set
+        {
+            _hp = value;
+            if (_hp == 0)
+            {
+                #warning Implement die method
+            }
+        }
+    }
 
     private int _maxSpeed;
 
@@ -151,6 +163,11 @@ public class Character : MonoBehaviour
     public int RollTheInitiative()
     {
         return Dice.Roll(Dice.Types.Twenty) + _initiative;
+    }
+
+    public void TakeDamage()
+    {
+        #warning Implement damage action
     }
 
     private void Awake()
