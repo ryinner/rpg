@@ -20,6 +20,8 @@ public class Grid<TGridObject>
     Vector3 _originPosition;
     private TGridObject[,] _gridArray;
 
+    private bool _showDebug = true;
+
     public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject)
     {
         _height = height;
@@ -37,8 +39,7 @@ public class Grid<TGridObject>
             }
         }
 
-        bool showDebug = true;
-        if (showDebug)
+        if (_showDebug)
         {
             TextMesh[,] _debugTextArray = new TextMesh[width, height];
             for (int x = 0; x < _gridArray.GetLength(0); x++)
@@ -93,7 +94,7 @@ public class Grid<TGridObject>
     public void SetGridObject(Vector3 worldPosition, TGridObject value)
     {
         int x, z;
-        GetXZ(worldPosition, out x, out z);
+        GetXZ(worldPosition, out x, out z); 
         SetGridObject(x, z, value);
     }
 
@@ -122,7 +123,7 @@ public class Grid<TGridObject>
         x = Mathf.FloorToInt((worldPosition - _originPosition).x / _cellSize);
         z = Mathf.FloorToInt((worldPosition - _originPosition).z / _cellSize);
     }
-    private Vector3 GetWorldPosition(int x, int z)
+    public Vector3 GetWorldPosition(int x, int z)
     {
         return new Vector3(x, 0, z) * _cellSize + _originPosition;
     }
@@ -140,6 +141,11 @@ public class Grid<TGridObject>
     public float GetCellSize()
     {
         return _cellSize;
+    }
+
+    public bool GetShowDebug()
+    {
+        return _showDebug;
     }
 
 }

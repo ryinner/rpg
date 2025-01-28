@@ -92,7 +92,7 @@ public class Pathfinding
             //Left Down
             if (currentNode.z - 1 >= 0) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.z - 1));
             //Left Up
-            if (currentNode.z + 1 <= _grid.GetWidth()) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.z + 1));
+            if (currentNode.z + 1 < _grid.GetHeigth()) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.z + 1));
         }
         if (currentNode.x + 1 < _grid.GetWidth())
         {
@@ -101,17 +101,17 @@ public class Pathfinding
             //Right Down
             if (currentNode.z - 1 >= 0) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.z - 1));
             //Right Up
-            if (currentNode.z + 1 <= _grid.GetHeigth()) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.z + 1));
+            if (currentNode.z + 1 < _grid.GetHeigth()) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.z + 1));
         }
 
         if (currentNode.z - 1 >= 0) neighbourList.Add(GetNode(currentNode.x, currentNode.z - 1));
-        if (currentNode.z + 1 <= _grid.GetHeigth()) neighbourList.Add(GetNode(currentNode.x, currentNode.z + 1));
+        if (currentNode.z + 1 < _grid.GetHeigth()) neighbourList.Add(GetNode(currentNode.x, currentNode.z + 1));
 
         return neighbourList;
     }
 
     public PathNode GetNode(int x, int z)
-    {
+    { 
         return _grid.GetGridObject(x, z);
     }
 

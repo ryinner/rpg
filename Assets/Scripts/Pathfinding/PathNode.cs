@@ -27,8 +27,8 @@ public class PathNode
         _grid = grid;
         _x = x;
         _z = z;
-        _isWalkable = true;
-    }
+        _isWalkable = CheckPassability();
+    } 
 
     public override string ToString()
     {
@@ -40,4 +40,10 @@ public class PathNode
         _fCost = _gCost + _hCost;
     }
 
+
+ private bool CheckPassability()
+    {
+        Collider[] intersecting = Physics.OverlapSphere(_grid.GetWorldPosition(_x, _z) + new Vector3(_grid.GetCellSize(), 0, _grid.GetCellSize()) * .5f, 0.0001f);
+        return intersecting.Length == 0;
+    }
 }
