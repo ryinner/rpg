@@ -20,9 +20,10 @@ public class Testing : MonoBehaviour
             grid.GetXZ(position, out int x, out int z);
             List<PathNode> path = pathfinding.FindPath(0, 0, x, z);
             if (path != null)
-                for (int i = 0; i < path.Count - 1; i++){
-                 
-                 if(grid.GetShowDebug()) Debug.DrawLine(new Vector3(path[i].x, 0, path[i].z) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f, new Vector3(path[i + 1].x, 0, path[i + 1].z) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f, Color.green, 1f);
+                for (int i = 0; i < path.Count - 1; i++)
+                {
+
+                    if (grid.GetShowDebug()) Debug.DrawLine(new Vector3(path[i].x, 0, path[i].z) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f, new Vector3(path[i + 1].x, 0, path[i + 1].z) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f, Color.green, 1f);
                 }
         }
 
@@ -40,7 +41,7 @@ public class Testing : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 worldPosition = Vector3.zero;
-        if (new Plane(Vector3.up, 0).Raycast(ray,  out float distance))
+        if (new Plane(Vector3.up, 0).Raycast(ray, out float distance))
         {
             worldPosition = ray.GetPoint(distance);
         }

@@ -94,7 +94,7 @@ public class Grid<TGridObject>
     public void SetGridObject(Vector3 worldPosition, TGridObject value)
     {
         int x, z;
-        GetXZ(worldPosition, out x, out z);
+        GetXZ(worldPosition, out x, out z); 
         SetGridObject(x, z, value);
     }
 

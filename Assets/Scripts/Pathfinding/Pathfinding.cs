@@ -111,7 +111,7 @@ public class Pathfinding
     }
 
     public PathNode GetNode(int x, int z)
-    {
+    { 
         return _grid.GetGridObject(x, z);
     }
 

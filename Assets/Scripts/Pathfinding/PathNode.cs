@@ -28,7 +28,7 @@ public class PathNode
         _x = x;
         _z = z;
         _isWalkable = CheckPassability();
-    }
+    } 
 
     public override string ToString()
     {
