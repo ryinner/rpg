@@ -37,6 +37,7 @@ public class Character : MonoBehaviour, IDamagable
     private int _speed;
 
     private int _initiative;
+    public int Initiative => _initiative;
 
     [Header("Character characteristics")]
 
@@ -176,6 +177,15 @@ public class Character : MonoBehaviour, IDamagable
     public void PrepareToRound()
     {
         _speed = _maxSpeed;
+
+        // Логика подготовки персонажа к ходу из очереди
+        Debug.Log($"{_race}-{_class} ready!");
+    }
+
+    public void SetHighlight(bool isActive)
+    {
+        // Включение или отключение подсветки перса, сюда код подсветки с пар
+        Debug.Log($"{_race}-{_class} status: {isActive}");
     }
 
     public int RollTheInitiative()
