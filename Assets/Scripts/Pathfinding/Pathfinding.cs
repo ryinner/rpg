@@ -37,6 +37,10 @@ public class Pathfinding
                 pathNode.gCost = int.MaxValue;
                 pathNode.CalculateFCost();
                 pathNode.cameFromNode = null;
+                
+                pathNode.CheckPassability();
+                if(!pathNode.isWalkable) _closedList.Add(pathNode);
+                else if(_closedList.Contains(pathNode)) _closedList.Remove(pathNode);
             }
         }
 
@@ -59,11 +63,6 @@ public class Pathfinding
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (_closedList.Contains(neighbourNode)) continue;
-                if (!neighbourNode.isWalkable)
-                {
-                    _closedList.Add(neighbourNode);
-                    continue;
-                }
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if (tentativeGCost < neighbourNode.gCost)
                 {

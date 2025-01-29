@@ -20,7 +20,7 @@ public class Grid<TGridObject>
     Vector3 _originPosition;
     private TGridObject[,] _gridArray;
 
-    private bool _showDebug = true;
+    private bool _showDebug = false;
 
     public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject)
     {
@@ -47,6 +47,7 @@ public class Grid<TGridObject>
                 for (int z = 0; z < _gridArray.GetLength(1); z++)
                 {
                     _debugTextArray[x, z] = CreateWorldText(null, _gridArray[x, z]?.ToString(), GetWorldPosition(x, z) + new Vector3(cellSize, 0, cellSize) * .5f, 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Left, 5000);
+
                     Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 1000f);
                     Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x + 1, z), Color.white, 1000f);
                 }
@@ -59,6 +60,7 @@ public class Grid<TGridObject>
                 _debugTextArray[eventArgs.x, eventArgs.z].text = _gridArray[eventArgs.x, eventArgs.z]?.ToString();
             };
         }
+
     }
 
     public static TextMesh CreateWorldText(Transform parent, string text, Vector3 localPosition, int fontSize, Color color, TextAnchor textAnchor, TextAlignment textAlignment, int sortingOrder)
@@ -94,7 +96,7 @@ public class Grid<TGridObject>
     public void SetGridObject(Vector3 worldPosition, TGridObject value)
     {
         int x, z;
-        GetXZ(worldPosition, out x, out z); 
+        GetXZ(worldPosition, out x, out z);
         SetGridObject(x, z, value);
     }
 
