@@ -19,6 +19,8 @@ public class PathNode
     private int _fCost;
     public int fCost { get { return _fCost; } set { _fCost = value; } }
 
+    public Vector3 Vector3 { get => new (x, 0, z); }
+
     private PathNode _cameFromNode;
     public PathNode cameFromNode { get { return _cameFromNode; } set { _cameFromNode = value; } }
 
@@ -41,9 +43,9 @@ public class PathNode
     }
 
 
- public void CheckPassability()
+    public void CheckPassability()
     {
-        Collider[] intersecting = Physics.OverlapSphere(_grid.GetWorldPosition(_x, _z) + Vector3.one * _grid.GetCellSize() * .5f, _grid.GetCellSize() * .3f );
+        Collider[] intersecting = Physics.OverlapSphere(_grid.GetWorldPosition(_x, _z) + Vector3.one * _grid.GetCellSize() * .5f, _grid.GetCellSize() * .01f );
         _isWalkable = intersecting.Length == 0;
     }
 }

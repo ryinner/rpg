@@ -35,6 +35,8 @@ public class Character : MonoBehaviour, IDamagable
     private int _maxSpeed;
 
     private int _speed;
+        
+    public int Speed { get => _speed; }
 
     private int _initiative;
     public int Initiative => _initiative;
@@ -203,6 +205,8 @@ public class Character : MonoBehaviour, IDamagable
         TakeBonuses(_race.Bonuses);
 
         _maxSpeed = _race.Speed;
+        #warning Remove after turn to order
+        PrepareToRound();
 
         _constitutionModifier = CalculateModifier(_constitution);
         _strengthModifier = CalculateModifier(_strength);
