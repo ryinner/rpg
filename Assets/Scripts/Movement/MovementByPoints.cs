@@ -4,7 +4,7 @@ using UnityEngine;
 class MovementByPoints : MonoBehaviour
 {
     [SerializeField]
-    private List<Vector3> _points = new ();
+    private List<Vector3> _points = new();
 
     public List<Vector3> Points { get => _points; }
 
@@ -19,13 +19,15 @@ class MovementByPoints : MonoBehaviour
 
     private void Update()
     {
-         if(_isMoving) {
-            if (_currentPointIndex < _points.Count) {
+        if (_isMoving)
+        {
+            if (_currentPointIndex < _points.Count)
+            {
                 var currentPoint = _points[_currentPointIndex];
                 transform.position = Vector3.MoveTowards(transform.position, currentPoint, _speed * Time.deltaTime);
 
                 var direction = transform.position - currentPoint;
-                var targetDirection = Quaternion.LookRotation(direction, Vector3.up);   
+                var targetDirection = Quaternion.LookRotation(direction, Vector3.up);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetDirection, 5 * Time.deltaTime);
 
                 var distance = Vector3.Distance(transform.position, currentPoint);
@@ -35,15 +37,14 @@ class MovementByPoints : MonoBehaviour
                     _currentPointIndex++;
                 }
             }
-            else 
+            else
             {
                 _isMoving = false;
             }
-            return;
         }
     }
 
-    public void StartMoving(List<Vector3> points) 
+    public void StartMoving(List<Vector3> points)
     {
         _points = points;
         _isMoving = true;
