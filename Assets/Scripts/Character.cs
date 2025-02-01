@@ -36,7 +36,7 @@ public class Character : MonoBehaviour, IDamagable
 
     private int _speed;
         
-    public int Speed { get => _speed; }
+    public int Speed { get => _speed; set => _speed = value; }
 
     private int _initiative;
     public int Initiative => _initiative;

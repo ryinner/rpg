@@ -43,6 +43,7 @@ public class MovingInTurns : MonoBehaviour
                     _path.Add(Point);
                 }
                 _movement.StartMoving(_path);
+                _character.Speed -= _path.Count * 5;
             }
         }
     }
