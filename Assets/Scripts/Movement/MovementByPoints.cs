@@ -17,6 +17,15 @@ class MovementByPoints : MonoBehaviour
 
     public bool IsMoving { get => _isMoving; }
 
+    private Animator _animator;
+
+    public void StartMoving(List<Vector3> points)
+    {
+        _points = points;
+        _isMoving = true;
+        _currentPointIndex = 0;
+    }
+
     private void Update()
     {
         if (_isMoving)
@@ -44,10 +53,8 @@ class MovementByPoints : MonoBehaviour
         }
     }
 
-    public void StartMoving(List<Vector3> points)
+    private void Awake()
     {
-        _points = points;
-        _isMoving = true;
-        _currentPointIndex = 0;
+        _animator = GetComponent<Animator>();
     }
 }
