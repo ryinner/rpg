@@ -50,7 +50,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
       propertyPath: m_Name
-      value: tripo_convert_83c71751-f975-4e5d-be58-9d5198633e02
+      value: HumanMag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4058f87103dbc4d4ab5f05248c03583b, type: 2}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 85f5989dc1db9c54f8822c28c40cf4fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
