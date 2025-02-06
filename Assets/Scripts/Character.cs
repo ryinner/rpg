@@ -20,22 +20,23 @@ public class Character : MonoBehaviour, IDamagable
 
     private int _hp;
 
-    public int Hp {
+    public int Hp
+    {
         get => _hp;
         set
         {
             _hp = value;
             if (_hp == 0)
             {
-                #warning Implement die method
+#warning Implement die method
             }
         }
     }
-    
+
     private int _maxSpeed;
 
     private int _speed;
-        
+
     public int Speed { get => _speed; set => _speed = value; }
 
     private int _initiative;
@@ -44,135 +45,51 @@ public class Character : MonoBehaviour, IDamagable
     [Header("Character characteristics")]
 
     // Телосложение
-    [SerializeField, Range(3, 20)]
-    private int _constitution;
-
-    public int Constitution { get => _constitution; set => _constitution = value; }
-
-    private int? _constitutionModifier = null;
-
-    public int ConstitutionModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _constitutionModifier = CalculateModifier(_constitution);
-            }
-            return _constitutionModifier ??= CalculateModifier(_constitution);
-        }
-    }
+    [SerializeReference]
+    private Characteric _constitution;
+    public int Constitution { get => _constitution.Value; set => _constitution.Value = value; }
+    public int ConstitutionModifier { get => _constitution.Modifier; }
 
     // Сила
-    [SerializeField, Range(3, 20)]
-    private int _strength;
-
-    public int Strength { get => _strength; set => _strength = value; }
-
-    private int? _strengthModifier = null;
-
-    public int StrengthModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _strengthModifier = CalculateModifier(_strength);
-            }
-            return _strengthModifier ??= CalculateModifier(_strength);
-        }
-    }
+    [SerializeReference]
+    private Characteric _strength;
+    public int Strength { get => _strength.Value; set => _strength.Value = value; }
+    public int StrengthModifier {get => _strength.Modifier; }
 
     // Ловкость
-    [SerializeField, Range(3, 20)]
-    private int _dexterity;
-
-    public int Dexterity { get => _dexterity; set => _dexterity = value; }
-
-    private int? _dexterityModifier = null;
-
-    public int DexterityModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _dexterityModifier = CalculateModifier(_dexterity);
-            }
-            return _dexterityModifier ??= CalculateModifier(_dexterity);
-        }
-    }
+    [SerializeReference]
+    private Characteric _dexterity;
+    public int Dexterity { get => _dexterity.Value; set => _dexterity.Value = value; }
+    public int DexterityModifier { get => _dexterity.Modifier; }
 
     // Интеллект
-    [SerializeField, Range(3, 20)]
-    private int _intelligence;
-
-    public int Intelligence { get => _intelligence; set => _intelligence = value; }
-
-    private int? _intelligenceModifier = null;
-
-    public int IntelligenceModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _intelligenceModifier = CalculateModifier(_intelligence);
-            }
-            return _intelligenceModifier ??= CalculateModifier(_intelligence);
-        }
-    }
+    [SerializeReference]
+    private Characteric _intelligence;
+    public int Intelligence { get => _intelligence.Value; set => _intelligence.Value = value; }
+    public int IntelligenceModifier { get => _intelligence.Modifier; }
 
     // Мудрость
-    [SerializeField, Range(3, 20)]
-    private int _wisdom;
-
-    public int Wisdom { get => _wisdom; set => _wisdom = value; }
-
-    private int? _wisdomModifier = null;
-
-    public int WisdomModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _wisdomModifier = CalculateModifier(_wisdom);
-            }
-            return _wisdomModifier ??= CalculateModifier(_wisdom);
-        }
-    }
+    [SerializeReference]
+    private Characteric _wisdom;
+    public int Wisdom { get => _wisdom.Value; set => _wisdom.Value = value; }
+    public int WisdomModifier { get => _wisdom.Modifier; }
 
     // Харизма
-    [SerializeField, Range(3, 20)]
-    private int _charisma;
+    [SerializeReference]
+    private Characteric _charisma;
+    public int Charisma { get => _charisma.Value; set => _charisma.Value = value; }
+    public int CharismaModifier { get => _charisma.Modifier; }
 
-    public int Charisma { get => _charisma; set => _charisma = value; }
-
-    private int? _charismaModifier = null;
-
-    public int CharismaModifier
-    {
-        get
-        {
-            if (Application.isEditor)
-            {
-                _charismaModifier = CalculateModifier(_charisma);
-            }
-            return _charismaModifier ??= CalculateModifier(_charisma);
-        }
-    }
-    
     public int Protection
     {
         get
         {
-            return DEFAUL_PROTECTION + _dexterity;
+            return DEFAUL_PROTECTION + DexterityModifier;
         }
     }
 
     [SerializeField]
-    private List<AbstractBonus> _bonuses = new ();
+    private List<AbstractBonus> _bonuses = new();
 
     public List<AbstractBonus> Bonuses { get { return _bonuses; } }
 
@@ -197,7 +114,7 @@ public class Character : MonoBehaviour, IDamagable
 
     public void TakeDamage()
     {
-        #warning Implement damage action
+#warning Implement damage action
     }
 
     private void Awake()
@@ -205,15 +122,8 @@ public class Character : MonoBehaviour, IDamagable
         TakeBonuses(_race.Bonuses);
 
         _maxSpeed = _race.Speed;
-        #warning Remove after turn to order
+#warning Remove after turn to order
         PrepareToRound();
-
-        _constitutionModifier = CalculateModifier(_constitution);
-        _strengthModifier = CalculateModifier(_strength);
-        _dexterityModifier = CalculateModifier(_dexterity);
-        _intelligenceModifier = CalculateModifier(_intelligence);
-        _wisdomModifier = CalculateModifier(_wisdom);
-        _charismaModifier = CalculateModifier(_charisma);
 
         _level = 1;
         if (_maxHp == 0)
@@ -252,10 +162,5 @@ public class Character : MonoBehaviour, IDamagable
             }
             _maxHp += ConstitutionModifier;
         }
-    }
-
-    private int CalculateModifier(int attribute)
-    {
-        return (int)Math.Floor((float)(attribute / 2)) - 5;
     }
 }
