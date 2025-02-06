@@ -13,11 +13,6 @@ public class IncreaseCharacterisics : AbstractBonus
 
     public override void Apply(Character character)
     {
-        Debug.Log(_characteric);
-
-        if (_characteric == CharactericsEnum.Strength) {
-            Debug.Log(character.Strength);
-        }
         switch (_characteric)
         {
             case CharactericsEnum.Strength: character.Strength += _point; break;
@@ -27,9 +22,6 @@ public class IncreaseCharacterisics : AbstractBonus
             case CharactericsEnum.Intelligence: character.Intelligence += _point; break;
             case CharactericsEnum.Wisdom: character.Wisdom += _point; break;
             default: throw new ArgumentException("Unknown characteristics type" + _characteric.HumanName());
-        }
-        if (_characteric == CharactericsEnum.Strength) {
-            Debug.Log(character.Strength);
         }
     }
 }

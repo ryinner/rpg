@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IDamagable
@@ -46,31 +47,31 @@ public class Character : MonoBehaviour, IDamagable
 
     // Телосложение
     [SerializeReference]
-    private Characteric _constitution;
+    private Characteric _constitution = new();
     public int Constitution { get => _constitution.Value; set => _constitution.Value = value; }
     public int ConstitutionModifier { get => _constitution.Modifier; }
 
     // Сила
     [SerializeReference]
-    private Characteric _strength;
+    private Characteric _strength = new();
     public int Strength { get => _strength.Value; set => _strength.Value = value; }
     public int StrengthModifier {get => _strength.Modifier; }
 
     // Ловкость
     [SerializeReference]
-    private Characteric _dexterity;
+    private Characteric _dexterity = new();
     public int Dexterity { get => _dexterity.Value; set => _dexterity.Value = value; }
     public int DexterityModifier { get => _dexterity.Modifier; }
 
     // Интеллект
     [SerializeReference]
-    private Characteric _intelligence;
+    private Characteric _intelligence = new();
     public int Intelligence { get => _intelligence.Value; set => _intelligence.Value = value; }
     public int IntelligenceModifier { get => _intelligence.Modifier; }
 
     // Мудрость
     [SerializeReference]
-    private Characteric _wisdom;
+    private Characteric _wisdom  = new();
     public int Wisdom { get => _wisdom.Value; set => _wisdom.Value = value; }
     public int WisdomModifier { get => _wisdom.Modifier; }
 
