@@ -505,15 +505,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _race: {fileID: 8110470332400355717, guid: 3a60e243f30ba6c418685f4fb6dbb7d2, type: 3}
   _class: {fileID: 144889897138030314, guid: b86308348e442244796493b78529ca0c, type: 3}
-  _level: 1
+  _level: 9
   _maxHp: 6
-  _constitution: 10
-  _strength: 10
-  _dexterity: 10
-  _intelligence: 10
-  _wisdom: 10
-  _charisma: 10
+  _constitution:
+    rid: -2
+  _strength:
+    rid: -2
+  _dexterity:
+    rid: -2
+  _intelligence:
+    rid: -2
+  _wisdom:
+    rid: -2
+  _charisma:
+    rid: -2
   _bonuses: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &1272303320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,13 +805,24 @@ MonoBehaviour:
   _class: {fileID: 0}
   _level: 1
   _maxHp: 10
-  _constitution: 10
-  _strength: 3
-  _dexterity: 3
-  _intelligence: 3
-  _wisdom: 3
-  _charisma: 3
+  _constitution:
+    rid: -2
+  _strength:
+    rid: -2
+  _dexterity:
+    rid: -2
+  _intelligence:
+    rid: -2
+  _wisdom:
+    rid: -2
+  _charisma:
+    rid: -2
   _bonuses: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &2004875265
 MonoBehaviour:
   m_ObjectHideFlags: 0

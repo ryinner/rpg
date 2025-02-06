@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -21,7 +20,7 @@ public class IncreaseCharacterisics : AbstractBonus
             case CharactericsEnum.Dexterity: character.Dexterity += _point; break;
             case CharactericsEnum.Intelligence: character.Intelligence += _point; break;
             case CharactericsEnum.Wisdom: character.Wisdom += _point; break;
-            default: throw new ArgumentException("Unknown characteristics type" + _characteric.HumanName());
+            default: throw new ArgumentException("Unknown characteristics type" +  Enum.GetName(typeof(CharactericsEnum), _characteric));
         }
     }
 }
