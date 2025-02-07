@@ -35,7 +35,11 @@ public class TurnOrder : MonoBehaviour
 
     private void RollInitiative()
     {
-        Characters = Characters.OrderByDescending(c => c.Initiative).ToList();
+        foreach (var character in Characters)
+        {
+            character.PrepareToFigth();
+        }
+        Characters = Characters.OrderByDescending(c => c.CurrentInitiative).ToList();
     }
 
     // Переключение персоанажа на следующего
