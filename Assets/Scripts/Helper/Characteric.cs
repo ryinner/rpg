@@ -9,6 +9,10 @@ public class Characteric
 
     public int Value { get => _value; set => _value = value; }
 
+    private bool _isMaster = false; 
+
+    public bool IsMaster { get => _isMaster; set => _isMaster = value; }
+
     // Add to roll
     private int? _modifier = null;
 
@@ -21,6 +25,11 @@ public class Characteric
             }
             return _modifier??= CalculateModifier(_value);
         }
+    }
+
+    public int RollSavingThrow(Dice.Mode mode, int bonus)
+    {
+        return Dice.Roll(Dice.Types.Twenty, mode) + Modifier + (IsMaster ? bonus : 0);
     }
 
     private int CalculateModifier(int attribute)
