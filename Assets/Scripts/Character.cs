@@ -29,7 +29,7 @@ public class Character : MonoBehaviour, IDamagable
             _hp = value;
             if (_hp == 0)
             {
-#warning Implement die method
+                // Вызываем событие смерти
             }
         }
     }
@@ -42,6 +42,9 @@ public class Character : MonoBehaviour, IDamagable
 
     private int _initiative;
     public int Initiative => _initiative;
+
+    private int _currentInitiative;
+    public int CurrentInitiative { get => _currentInitiative; set => _currentInitiative = value; }
 
     [Header("Character characteristics")]
 
@@ -94,6 +97,11 @@ public class Character : MonoBehaviour, IDamagable
 
     public List<AbstractBonus> Bonuses { get { return _bonuses; } }
 
+    public void PrepareToFigth()
+    {
+        CurrentInitiative = RollTheInitiative();
+    }
+
     public void PrepareToRound()
     {
         _speed = _maxSpeed;
@@ -108,14 +116,9 @@ public class Character : MonoBehaviour, IDamagable
         Debug.Log($"{_race}-{_class} status: {isActive}");
     }
 
-    public int RollTheInitiative()
-    {
-        return Dice.Roll(Dice.Types.Twenty) + _initiative;
-    }
-
     public void TakeDamage()
     {
-#warning Implement damage action
+        // Здесь логика получения урона
     }
 
     private void Awake()
@@ -123,16 +126,18 @@ public class Character : MonoBehaviour, IDamagable
         TakeBonuses(_race.Bonuses);
 
         _maxSpeed = _race.Speed;
-#warning Remove after turn to order
-        PrepareToRound();
 
-        _level = 1;
         if (_maxHp == 0)
         {
             CalculateMaxHp();
         }
 
         _initiative = DexterityModifier;
+    }
+
+    private int RollTheInitiative()
+    {
+        return Dice.Roll(Dice.Types.Twenty) + Initiative;
     }
 
     private void TakeBonuses(List<AbstractBonus> bonuses)
