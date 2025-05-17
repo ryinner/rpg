@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using RPG.Character;
+using RPG.Characters;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementByPoints))]

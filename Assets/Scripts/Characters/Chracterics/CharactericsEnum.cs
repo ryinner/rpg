@@ -1,4 +1,4 @@
-namespace RPG.Character.Characterics
+namespace RPG.Characters.Characterics
 {
     public enum CharactericsEnum
     {

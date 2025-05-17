@@ -1,8 +1,8 @@
 using System;
-using RPG.Character.Characterics;
+using RPG.Characters.Characterics;
 using UnityEngine;
 
-namespace RPG.Character.Bonuses
+namespace RPG.Characters.Bonuses
 {
     [Serializable]
     public class IncreaseCharacterisics : AbstractBonus

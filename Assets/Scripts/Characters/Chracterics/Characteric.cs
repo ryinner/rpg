@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RPG.Character.Characterics
+namespace RPG.Characters.Characterics
 {
     public class Characteric
     {

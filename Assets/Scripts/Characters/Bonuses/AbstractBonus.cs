@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RPG.Character.Bonuses
+namespace RPG.Characters.Bonuses
 {
     [Serializable]
     public abstract class AbstractBonus : MonoBehaviour

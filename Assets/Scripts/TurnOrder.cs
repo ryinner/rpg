@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RPG.Character;
+using RPG.Characters;
 using UnityEngine;
 
 // Это про логику хождения персонажами

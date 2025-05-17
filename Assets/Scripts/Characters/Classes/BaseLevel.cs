@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using RPG.Character.Bonuses;
+using RPG.Characters.Bonuses;
 using UnityEngine;
 
-namespace RPG.Character.Classes
+namespace RPG.Characters.Classes
 {
     [Serializable]
     public class BaseLevel

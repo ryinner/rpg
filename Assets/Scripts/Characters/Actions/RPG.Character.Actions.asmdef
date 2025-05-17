@@ -1,0 +1,16 @@
+{
+    "name": "RPG.Character.Actions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:991f7d16e5472de4a9efb8195a46f37e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

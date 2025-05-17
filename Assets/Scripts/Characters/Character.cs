@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using RPG.Character.Bonuses;
-using RPG.Character.Characterics;
-using RPG.Character.Classes;
-using RPG.Character.Interfaces;
+using RPG.Characters.Bonuses;
+using RPG.Characters.Characterics;
+using RPG.Characters.Classes;
+using RPG.Characters.Interfaces;
 using UnityEngine;
 
-namespace RPG.Character
+namespace RPG.Characters
 {
     public class Character : MonoBehaviour, IDamagable
     {
@@ -35,7 +35,7 @@ namespace RPG.Character
                 if (_hp <= 0)
                 {
                     _hp = 0;
-                    // Вызываем событие смерти
+                    Die();
                 }
             }
         }
@@ -122,9 +122,9 @@ namespace RPG.Character
             Debug.Log($"{_race}-{_class} status: {isActive}");
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
-            // Здесь логика получения урона
+            Hp -= damage;
         }
 
         private void Awake()
@@ -139,6 +139,11 @@ namespace RPG.Character
             }
 
             _initiative = DexterityModifier;
+        }
+
+        private void Die()
+        {
+            
         }
 
         private int RollTheInitiative()

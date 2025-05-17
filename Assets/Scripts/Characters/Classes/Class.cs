@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RPG.Character.Classes
+namespace RPG.Characters.Classes
 {
     [Serializable]
     public class Class : MonoBehaviour

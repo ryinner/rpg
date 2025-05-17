@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using RPG.Character.Bonuses;
+using RPG.Characters.Bonuses;
 using UnityEngine;
 
-namespace RPG.Character
+namespace RPG.Characters
 {
     [Serializable]
     public class Race : MonoBehaviour
