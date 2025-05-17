@@ -15,6 +15,11 @@ namespace RPG.Character.Bonuses
 
         public override void Apply(Character character)
         {
+            if (character == null)
+            {
+                throw new ArgumentException("Character can not be null");
+            }
+
             switch (_characteric)
             {
                 case CharactericsEnum.Strength: character.Strength += _point; break;
@@ -29,6 +34,12 @@ namespace RPG.Character.Bonuses
 
         public override void Cancel(Character character)
         {
+            if (character == null)
+            {
+                throw new ArgumentException("Character can not be null");
+            }
+
+
             switch (_characteric)
             {
                 case CharactericsEnum.Strength: character.Strength += _point; break;
