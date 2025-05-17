@@ -9,7 +9,15 @@ namespace RPG.Character.Characterics
         [SerializeField, Range(3, 20), ContextMenuItem("Generate random value", nameof(Random))]
         private int _value;
 
-        public int Value { get => _value; set => _value = value; }
+        public int Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                _modifier = CalculateModifier();
+            }
+        }
 
         private bool _isMaster = false;
 
@@ -24,9 +32,9 @@ namespace RPG.Character.Characterics
             {
                 if (Application.isEditor)
                 {
-                    _modifier = CalculateModifier(_value);
+                    _modifier = CalculateModifier();
                 }
-                return _modifier ??= CalculateModifier(_value);
+                return _modifier ??= CalculateModifier();
             }
         }
 
@@ -35,9 +43,9 @@ namespace RPG.Character.Characterics
             return Dice.Roll(Dice.Types.Twenty, mode) + Modifier + (IsMaster ? bonus : 0);
         }
 
-        private int CalculateModifier(int attribute)
+        private int CalculateModifier()
         {
-            return (int)Math.Floor((float)(attribute / 2)) - 5;
+            return (int)Math.Floor((float)(_value / 2)) - 5;
         }
 
         private void Random()
