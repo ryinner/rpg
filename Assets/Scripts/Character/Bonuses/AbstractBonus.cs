@@ -7,5 +7,7 @@ namespace RPG.Character.Bonuses
     public abstract class AbstractBonus : MonoBehaviour
     {
         public abstract void Apply(Character character);
+
+        public abstract void Cancel(Character character);
     }
 }
